@@ -15,8 +15,6 @@
 		7AB1930123993D3B00D11C3F /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1930023993D3B00D11C3F /* ExchangeRateViewController.swift */; };
 		7AB1930323993D6200D11C3F /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1930223993D6200D11C3F /* TranslationViewController.swift */; };
 		7AB1930523993D7D00D11C3F /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1930423993D7D00D11C3F /* WeatherViewController.swift */; };
-		7AB193082399420C00D11C3F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB193072399420C00D11C3F /* ApiKey.swift */; };
-		7AB1930A2399425400D11C3F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7AB193092399425400D11C3F /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +28,6 @@
 		7AB1930023993D3B00D11C3F /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewController.swift; sourceTree = "<group>"; };
 		7AB1930223993D6200D11C3F /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		7AB1930423993D7D00D11C3F /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		7AB193072399420C00D11C3F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
-		7AB193092399425400D11C3F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +109,6 @@
 		7AB19306239941EB00D11C3F /* gitignore */ = {
 			isa = PBXGroup;
 			children = (
-				7AB193072399420C00D11C3F /* ApiKey.swift */,
-				7AB193092399425400D11C3F /* .gitignore */,
 			);
 			path = gitignore;
 			sourceTree = "<group>";
@@ -177,7 +171,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AB1930A2399425400D11C3F /* .gitignore in Resources */,
 				7AB192F523993A9C00D11C3F /* LaunchScreen.storyboard in Resources */,
 				7AB192F223993A9C00D11C3F /* Assets.xcassets in Resources */,
 				7AB192F023993A9B00D11C3F /* Main.storyboard in Resources */,
@@ -195,7 +188,6 @@
 				7AB1930523993D7D00D11C3F /* WeatherViewController.swift in Sources */,
 				7AB1930123993D3B00D11C3F /* ExchangeRateViewController.swift in Sources */,
 				7AB192E923993A9B00D11C3F /* AppDelegate.swift in Sources */,
-				7AB193082399420C00D11C3F /* ApiKey.swift in Sources */,
 				7AB192EB23993A9B00D11C3F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
