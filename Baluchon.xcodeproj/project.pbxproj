@@ -29,7 +29,7 @@
 		7AB1930023993D3B00D11C3F /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewController.swift; sourceTree = "<group>"; };
 		7AB1930223993D6200D11C3F /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		7AB1930423993D7D00D11C3F /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		7AB1930D23994A8000D11C3F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		7AB1930D23994A8000D11C3F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApiKey.swift; path = ../ApiKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,6 @@
 				7AB192FE23993AE300D11C3F /* Controller */,
 				7AB192FD23993ADB00D11C3F /* View */,
 				7AB192FC23993AD000D11C3F /* Model */,
-				7AB1930D23994A8000D11C3F /* ApiKey.swift */,
 			);
 			path = Baluchon;
 			sourceTree = "<group>";
@@ -100,6 +99,7 @@
 		7AB192FF23993AEA00D11C3F /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				7AB1930D23994A8000D11C3F /* ApiKey.swift */,
 				7AB192F323993A9C00D11C3F /* LaunchScreen.storyboard */,
 				7AB192F623993A9C00D11C3F /* Info.plist */,
 				7AB192E823993A9B00D11C3F /* AppDelegate.swift */,
