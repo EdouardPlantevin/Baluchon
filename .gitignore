@@ -2,3 +2,5 @@ ApiKey.swift
 Baluchon/gitignore/ApiKey.swift
 ApiKey
 Baluchon/gitignore/ApiKey
+*.ApiKey
+*.ApiKey.swift

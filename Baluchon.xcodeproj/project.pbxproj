@@ -15,7 +15,7 @@
 		7AB1930123993D3B00D11C3F /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1930023993D3B00D11C3F /* ExchangeRateViewController.swift */; };
 		7AB1930323993D6200D11C3F /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1930223993D6200D11C3F /* TranslationViewController.swift */; };
 		7AB1930523993D7D00D11C3F /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1930423993D7D00D11C3F /* WeatherViewController.swift */; };
-		7AB1930C2399483B00D11C3F /* KeyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1930B2399483B00D11C3F /* KeyApi.swift */; };
+		7AB1930E23994A8000D11C3F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1930D23994A8000D11C3F /* ApiKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		7AB1930023993D3B00D11C3F /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewController.swift; sourceTree = "<group>"; };
 		7AB1930223993D6200D11C3F /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		7AB1930423993D7D00D11C3F /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		7AB1930B2399483B00D11C3F /* KeyApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyApi.swift; sourceTree = "<group>"; };
+		7AB1930D23994A8000D11C3F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +62,12 @@
 		7AB192E723993A9B00D11C3F /* Baluchon */ = {
 			isa = PBXGroup;
 			children = (
-				7AB19306239941EB00D11C3F /* gitignore */,
 				7AB192F123993A9C00D11C3F /* Assets.xcassets */,
 				7AB192FF23993AEA00D11C3F /* SupportingFiles */,
 				7AB192FE23993AE300D11C3F /* Controller */,
 				7AB192FD23993ADB00D11C3F /* View */,
 				7AB192FC23993AD000D11C3F /* Model */,
+				7AB1930D23994A8000D11C3F /* ApiKey.swift */,
 			);
 			path = Baluchon;
 			sourceTree = "<group>";
@@ -106,14 +106,6 @@
 				7AB192EA23993A9B00D11C3F /* SceneDelegate.swift */,
 			);
 			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		7AB19306239941EB00D11C3F /* gitignore */ = {
-			isa = PBXGroup;
-			children = (
-				7AB1930B2399483B00D11C3F /* KeyApi.swift */,
-			);
-			path = gitignore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,10 +180,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AB1930323993D6200D11C3F /* TranslationViewController.swift in Sources */,
-				7AB1930C2399483B00D11C3F /* KeyApi.swift in Sources */,
 				7AB1930523993D7D00D11C3F /* WeatherViewController.swift in Sources */,
 				7AB1930123993D3B00D11C3F /* ExchangeRateViewController.swift in Sources */,
 				7AB192E923993A9B00D11C3F /* AppDelegate.swift in Sources */,
+				7AB1930E23994A8000D11C3F /* ApiKey.swift in Sources */,
 				7AB192EB23993A9B00D11C3F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
