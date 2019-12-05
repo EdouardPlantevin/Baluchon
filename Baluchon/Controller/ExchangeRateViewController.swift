@@ -10,11 +10,12 @@ import UIKit
 
 class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    let rate = ExchangeRate()
     
-    var myCurrency:[String] = []
-    var myValues:[Double] = []
+    var activeValue: Double = 0
+    var activeCurrency: String = ""
     
-    var activeCurrency: Double = 0;
+    var test:Int = 0
     
     //Object
     @IBOutlet weak var textFieldRate: UITextField!
@@ -26,49 +27,27 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return myCurrency.count
+        return rate.myCurrency.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return myCurrency[row]
+        return rate.myCurrency[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        activeCurrency = myValues[row]
+        activeValue = rate.myValues[row]
+        activeCurrency = rate.myCurrency[row]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let url = URL(string: apiUrl["rateUrl"]!)
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if error != nil {
-                print("Error")
-            } else {
-                if let content = data {
-                    do {
-                        let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        
-                        if let rates = myJson["rates"] as? NSDictionary {
-                            for (key, value) in rates {
-                                self.myCurrency.append((key as? String)!)
-                                self.myValues.append((value as? Double)!)
-                            }
-                            print(self.myCurrency)
-                            print(self.myValues)
-                        }
-                    } catch {
-                        
-                    }
-                }
-            }
-            self.pickerViewDevice.reloadAllComponents()
-        }
-        task.resume()
+        rate.getAllDevice()
+        pickerViewDevice.reloadAllComponents()
     }
     
     
     // Button
     @IBAction func convertButton(_ sender: UIButton) {
-        resultLabel.text = String(Double(textFieldRate.text!)! * activeCurrency)
+        resultLabel.text = String(Int(Double(textFieldRate.text!)! * activeValue))
+        resultLabel.text = resultLabel.text! + " " + activeCurrency
     }
     
 }
