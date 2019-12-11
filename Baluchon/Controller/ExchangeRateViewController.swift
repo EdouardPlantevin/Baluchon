@@ -12,10 +12,10 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     let rate = ExchangeRate()
     
+    //Use for resultLabel
     var activeValue: Double = 0
     var activeCurrency: String = ""
-    
-    var test:Int = 0
+
     
     //Object
     @IBOutlet weak var textFieldRate: UITextField!
@@ -37,16 +37,20 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
         activeCurrency = rate.myCurrency[row]
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        pickerViewDevice.reloadAllComponents()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         rate.getAllDevice()
-        pickerViewDevice.reloadAllComponents()
     }
     
     
     // Button
     @IBAction func convertButton(_ sender: UIButton) {
-        resultLabel.text = String(Int(Double(textFieldRate.text!)! * activeValue))
+        textFieldRate.resignFirstResponder()
+        resultLabel.text = String(Double(textFieldRate.text!)! * activeValue)
         resultLabel.text = resultLabel.text! + " " + activeCurrency
     }
     

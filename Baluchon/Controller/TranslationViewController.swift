@@ -9,4 +9,19 @@
 import UIKit
 
 class TranslationViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        SwiftGoogleTranslate.shared.start(with: apiUrl["googleTranslate"]!)
+    }
+    
+    @IBAction func translateButton(_ sender: UIButton) {
+        SwiftGoogleTranslate.shared.translate("Hello!", "es", "en") { (text, error) in
+          if let t = text {
+            print(t)
+          }
+        }
+    }
+    
+    
 }
