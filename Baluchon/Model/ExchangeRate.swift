@@ -21,7 +21,6 @@ class ExchangeRate {
                 if let content = data {
                     do {
                         let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-            
                         
                         if let rates = myJson["rates"] as? NSDictionary {
                             for (key, value) in rates {

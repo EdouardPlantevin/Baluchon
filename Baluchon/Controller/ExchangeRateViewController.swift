@@ -43,6 +43,7 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pickerViewDevice.reloadAllComponents()
         rate.getAllDevice()
     }
     
@@ -50,8 +51,27 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
     // Button
     @IBAction func convertButton(_ sender: UIButton) {
         textFieldRate.resignFirstResponder()
-        resultLabel.text = String(Double(textFieldRate.text!)! * activeValue)
-        resultLabel.text = resultLabel.text! + " " + activeCurrency
+        if (textFieldRate.text != nil && textFieldRate.text != "") {
+            resultLabel.text = String(Double(textFieldRate.text!)! * activeValue)
+            resultLabel.text = resultLabel.text! + " " + activeCurrency
+        } else {
+            presentAlert()
+        }
+
     }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        textFieldRate.resignFirstResponder()
+    }
+    
+    //Function
+    
+    func presentAlert() {
+        let alertVC = UIAlertController(title: "Erreur", message: "Vous n'avez entrez aucun chiffre", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
+    }
+    
     
 }
