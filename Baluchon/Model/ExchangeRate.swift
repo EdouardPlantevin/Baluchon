@@ -12,7 +12,7 @@ class ExchangeRate {
     var myCurrency:[String] = []
     var myValues:[Double] = []
 
-    func getAllDevice() {
+    func getAllDevice(callback: @escaping (Bool, ExchangeData?) -> Void) {
         let url = URL(string: apiUrl["rateUrl"]!)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
@@ -28,6 +28,8 @@ class ExchangeRate {
                                 self.myValues.append((value as? Double)!)
                             }
                         }
+                        let exchangeData = ExchangeData(myCurrency: self.myCurrency, myValues: self.myValues)
+                        callback(true, exchangeData)
                     } catch {
                        print("Error")
                     }

@@ -10,7 +10,7 @@ import UIKit
 
 class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    let rate = ExchangeRate()
+    var rate = ExchangeRate()
     
     //Use for resultLabel
     var activeValue: Double = 0
@@ -36,15 +36,29 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
         activeValue = rate.myValues[row]
         activeCurrency = rate.myCurrency[row]
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        pickerViewDevice.reloadAllComponents()
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickerViewDevice.reloadAllComponents()
-        rate.getAllDevice()
+        self.pickerViewDevice.setValue(UIColor.white, forKeyPath: "textColor")
+        self.rate.getAllDevice { (success, exchange) in
+            if success, let exchange = exchange {
+                self.update(exchange: exchange)
+            }
+        }
+    }
+    
+    func update(exchange: ExchangeData) {
+        DispatchQueue.main.async {
+            self.rate.myCurrency = exchange.myCurrency
+            self.rate.myValues = exchange.myValues
+            self.pickerViewDevice.reloadAllComponents()
+        }
+    }
+    
+    func convertDouble(number: Double) -> String {
+        var finalNumber = number
+        finalNumber = round(1000*number)/1000
+        return String(finalNumber)
     }
     
     
@@ -52,26 +66,17 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func convertButton(_ sender: UIButton) {
         textFieldRate.resignFirstResponder()
         if (textFieldRate.text != nil && textFieldRate.text != "") {
-            resultLabel.text = String(Double(textFieldRate.text!)! * activeValue)
+            let result = (Double(textFieldRate.text!))! * activeValue
+            let finalResult = convertDouble(number: result)
+            resultLabel.text = String(finalResult)
             resultLabel.text = resultLabel.text! + " " + activeCurrency
         } else {
-            presentAlert()
+            presentAlert(view: self, message: "Vous n'avez entrez aucun chiffre")
         }
-
     }
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         textFieldRate.resignFirstResponder()
     }
-    
-    //Function
-    
-    func presentAlert() {
-        let alertVC = UIAlertController(title: "Erreur", message: "Vous n'avez entrez aucun chiffre", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertVC.addAction(action)
-        present(alertVC, animated: true, completion: nil)
-    }
-    
-    
+
 }
