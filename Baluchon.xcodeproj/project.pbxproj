@@ -23,6 +23,7 @@
 		7AE55DF323D2337700B54116 /* ExchangeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE55DF223D2337700B54116 /* ExchangeData.swift */; };
 		7AE55DF623D2499500B54116 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE55DF523D2499500B54116 /* WeatherData.swift */; };
 		7AE55DF923D24ED400B54116 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE55DF823D24ED400B54116 /* StringExtention.swift */; };
+		7AE55E6623DC911B00B54116 /* ExtensionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE55E6523DC911B00B54116 /* ExtensionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		7AE55DF223D2337700B54116 /* ExchangeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeData.swift; sourceTree = "<group>"; };
 		7AE55DF523D2499500B54116 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		7AE55DF823D24ED400B54116 /* StringExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
+		7AE55E6523DC911B00B54116 /* ExtensionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				7AB192EE23993A9B00D11C3F /* Main.storyboard */,
+				7AE55E6523DC911B00B54116 /* ExtensionButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				7AB1930523993D7D00D11C3F /* WeatherViewController.swift in Sources */,
 				7AB1930123993D3B00D11C3F /* ExchangeRateViewController.swift in Sources */,
 				7AB192E923993A9B00D11C3F /* AppDelegate.swift in Sources */,
+				7AE55E6623DC911B00B54116 /* ExtensionButton.swift in Sources */,
 				7AB1930E23994A8000D11C3F /* ApiKey.swift in Sources */,
 				7AB19312239A6F5E00D11C3F /* SwiftGoogleTranslate.swift in Sources */,
 				7AB1931023995AFF00D11C3F /* ExchangeRate.swift in Sources */,

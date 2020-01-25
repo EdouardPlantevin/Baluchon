@@ -55,33 +55,18 @@ class WeatherViewController: UIViewController {
         self.degreesLabel.text = "\(degrees.rounded()) °C"
         self.detailWeatherLabel.text = description
         self.timeLabel.text = time
-        let url = URL(string: "http://openweathermap.org/img/wn/\(image)@2x.png")!
+        currentWeatherImage.image = UIImage(named: WeatherData.getImage(image: image))
         if image.contains("d") {
             setSunToTimeImage()
         } else {
             setMoonToTimeImage()
         }
-        downloadImage(from: url)
-    }
-    
-    
-    //Image
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
-    func downloadImage(from url: URL) {
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async() {
-                self.currentWeatherImage.image = UIImage(data: data)
-            }
-        }
+
     }
     
     // Button
     @IBAction func addNewCityButton() {
-        textfieldNewCity.isHidden = false
+        textfieldNewCity.isHidden = !textfieldNewCity.isHidden
     }
     
     @IBAction func addNewCity(_ sender: Any) {

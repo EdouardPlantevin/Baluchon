@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.058623619379999999" green="0.12466719" blue="0.16321334239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" red="0.10356647519999999" green="0.6933605075" blue="0.79868084189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="GbP-DU-X6Z" kind="relationship" relationship="viewControllers" id="GhC-6G-YSO"/>
@@ -40,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
-                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBh-mF-Rt8">
+                            <view alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBh-mF-Rt8">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
@@ -75,8 +75,13 @@
                                         <color key="backgroundColor" red="0.1628027558" green="0.2191836834" blue="0.25262027980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Convertir">
-                                            <color key="titleColor" red="0.10356647519999999" green="0.6933605075" blue="0.79868084189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="convertButton:" destination="GbP-DU-X6Z" eventType="touchUpInside" id="NPC-6z-MCk"/>
                                         </connections>
@@ -88,7 +93,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PJ9-tP-CPQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Bold" family="Bodoni 72" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -159,7 +164,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="R1q-oa-5La"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Bold" family="Bodoni 72" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -181,7 +186,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cKB-mS-i4t"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Bold" family="Bodoni 72" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -196,28 +201,32 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCR-BI-t3o">
-                                <rect key="frame" x="50" y="400" width="220" height="30"/>
+                                <rect key="frame" x="50" y="400" width="220" height="50"/>
                                 <color key="backgroundColor" red="0.1628027558" green="0.2191836834" blue="0.25262027980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="pM7-l7-rqh"/>
+                                    <constraint firstAttribute="height" constant="50" id="pM7-l7-rqh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <state key="normal" title="Traduire">
-                                    <color key="titleColor" red="0.0" green="0.69321972129999998" blue="0.80683785679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="translateBtn:" destination="fqZ-ox-mto" eventType="touchUpInside" id="mIU-rj-heu"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lDF-ek-VBW">
-                                <rect key="frame" x="20" y="450" width="280" height="49"/>
+                                <rect key="frame" x="20" y="470" width="280" height="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="T4l-op-8AA">
-                                <rect key="frame" x="160" y="289" width="54" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="T4l-op-8AA">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
@@ -239,6 +248,7 @@
                             <constraint firstItem="eiD-Io-duk" firstAttribute="trailing" secondItem="lDF-ek-VBW" secondAttribute="trailing" constant="20" id="J0J-TY-YsB"/>
                             <constraint firstItem="15p-9Z-SfK" firstAttribute="top" secondItem="xuD-Kw-z3o" secondAttribute="bottom" constant="40" id="Kq0-Ey-fSM"/>
                             <constraint firstItem="eiD-Io-duk" firstAttribute="trailing" secondItem="pY0-KD-Qdu" secondAttribute="trailing" constant="20" id="ME4-qU-XTF"/>
+                            <constraint firstItem="T4l-op-8AA" firstAttribute="centerX" secondItem="nsd-a9-Tdk" secondAttribute="centerX" id="OVA-wd-L96"/>
                             <constraint firstItem="H6b-6b-asJ" firstAttribute="trailing" secondItem="eiD-Io-duk" secondAttribute="trailing" id="PRz-ht-eXv"/>
                             <constraint firstItem="lDF-ek-VBW" firstAttribute="top" secondItem="MCR-BI-t3o" secondAttribute="bottom" constant="20" id="RZD-vf-A1a"/>
                             <constraint firstItem="lDF-ek-VBW" firstAttribute="leading" secondItem="eiD-Io-duk" secondAttribute="leading" constant="20" id="X2Q-by-4Va"/>
@@ -254,6 +264,7 @@
                             <constraint firstItem="pY0-KD-Qdu" firstAttribute="top" secondItem="eiD-Io-duk" secondAttribute="top" constant="40" id="rSK-uZ-bkb"/>
                             <constraint firstItem="skC-K4-r8R" firstAttribute="trailing" secondItem="eiD-Io-duk" secondAttribute="trailing" id="sxb-Zb-aae"/>
                             <constraint firstItem="ONj-W6-xL9" firstAttribute="trailing" secondItem="eiD-Io-duk" secondAttribute="trailing" id="v8x-X8-Tc6"/>
+                            <constraint firstItem="T4l-op-8AA" firstAttribute="centerY" secondItem="nsd-a9-Tdk" secondAttribute="centerY" id="yfh-SE-262"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eiD-Io-duk"/>
                     </view>
@@ -334,7 +345,7 @@
                                     <constraint firstAttribute="width" constant="30" id="bXp-N9-oQs"/>
                                 </constraints>
                             </imageView>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ayl-BQ-QFX">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ayl-BQ-QFX">
                                 <rect key="frame" x="80" y="101" width="160" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="fvW-Oq-mTa"/>
@@ -351,10 +362,11 @@
                                     <constraint firstAttribute="width" constant="30" id="2JW-no-Yz2"/>
                                     <constraint firstAttribute="width" secondItem="abx-Ts-tvz" secondAttribute="height" multiplier="1:1" id="BZk-H4-fDe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" red="0.1628027558" green="0.2191836834" blue="0.25262027980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="plus.magnifyingglass" catalog="system">
-                                    <color key="titleColor" red="0.1628027558" green="0.2191836834" blue="0.25262027980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="magnifyingglass.circle.fill" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large"/>
                                 </state>
                                 <connections>
                                     <action selector="addNewCityButton" destination="L7l-Js-MbK" eventType="touchUpInside" id="KoL-dG-h1s"/>
@@ -429,8 +441,8 @@
         <image name="backgroundWeather" width="1534" height="832"/>
         <image name="book.circle.fill" catalog="system" width="64" height="62"/>
         <image name="eurosign.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="64" height="62"/>
         <image name="moon.fill" catalog="system" width="64" height="62"/>
-        <image name="plus.magnifyingglass" catalog="system" width="64" height="60"/>
         <image name="sun.max.fill" catalog="system" width="64" height="62"/>
         <image name="sun.min.fill" catalog="system" width="64" height="60"/>
     </resources>
