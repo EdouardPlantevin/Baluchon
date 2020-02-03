@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ExchangeRateViewController: UIViewController {
     
     var rate = ExchangeRate()
     
@@ -22,23 +22,6 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var pickerViewDevice: UIPickerView!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    
-    
-    //PickerView
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return rate.myCurrency.count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return rate.myCurrency[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        activeValue = rate.myValues[row]
-        activeCurrency = rate.myCurrency[row]
-    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,21 +44,12 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    func convertDouble(number: Double) -> String {
-        var finalNumber = number
-        finalNumber = round(1000*number)/1000
-        return String(finalNumber)
-    }
-    
     
     // Button
     @IBAction func convertButton(_ sender: UIButton) {
         textFieldRate.resignFirstResponder()
         if (textFieldRate.text != nil && textFieldRate.text != "") {
-            let result = (Double(textFieldRate.text!))! * activeValue
-            let finalResult = convertDouble(number: result)
-            resultLabel.text = String(finalResult)
-            resultLabel.text = resultLabel.text! + " " + activeCurrency
+            resultLabel.text = ExchangeData.convertToResult(activeValue: activeValue, money: (Double(textFieldRate.text!))!, activeCurrency: activeCurrency)
         } else {
             presentAlert(view: self, message: "Vous n'avez entrez aucun chiffre")
         }
@@ -85,4 +59,22 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
         textFieldRate.resignFirstResponder()
     }
 
+}
+
+
+ //PickerView
+extension ExchangeRateViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return rate.myCurrency.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return rate.myCurrency[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        activeValue = rate.myValues[row]
+        activeCurrency = rate.myCurrency[row]
+    }
 }

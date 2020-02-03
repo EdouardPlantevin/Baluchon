@@ -10,9 +10,6 @@ import UIKit
 
 class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var languagesName: [String] = []
-    var languagesInitial: [String] = []
-    
     var activeLanguage: String = "fr"
     
     /// Outlet
@@ -27,13 +24,13 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return languagesName.count
+        return LanguageData.shared.languagesName.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return languagesName[row]
+        return LanguageData.shared.languagesName[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        activeLanguage = languagesInitial[row]
+        activeLanguage = LanguageData.shared.languagesInitial[row]
     }
     
     override func viewDidLoad() {
@@ -42,12 +39,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         SwiftGoogleTranslate.shared.start(with: "\(apiUrl["googleTranslate"]!)")
         SwiftGoogleTranslate.shared.languages { (languages, error) in
           if let languages = languages {
-            for language in languages {
-                if language.language != "fr" {
-                    self.languagesName.append(language.name)
-                    self.languagesInitial.append(language.language)
-                }
-            }
+            LanguageData.shared.add(languages: languages)
             DispatchQueue.main.async {
                 self.pickerViewLanguage.reloadAllComponents()
                 self.activityIndicator.stopAnimating()
@@ -62,8 +54,9 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func translateBtn(_ sender: Any) {
+        let currentLanguage = UserDefaults.standard.object(forKey: "currentLanguage")!
         if textfieldTranslate.text != nil && textfieldTranslate.text != "" {
-            SwiftGoogleTranslate.shared.translate("\(textfieldTranslate.text!)","\(activeLanguage)", "fr") { (text, error) in
+            SwiftGoogleTranslate.shared.translate("\(textfieldTranslate.text!)","\(activeLanguage)", "\(currentLanguage)") { (text, error) in
                 if let t = text {
                     DispatchQueue.main.async {
                         self.labelTranslate.text = "\(t)"

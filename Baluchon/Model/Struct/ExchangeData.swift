@@ -11,4 +11,17 @@ import Foundation
 struct ExchangeData {
     var myCurrency:[String] = []
     var myValues:[Double] = []
+    
+    static func convertDouble(number: Double) -> String {
+        var finalNumber = number
+        finalNumber = round(1000*number)/1000
+        print(finalNumber)
+        return String(finalNumber)
+    }
+    
+    static func convertToResult(activeValue: Double, money: Double, activeCurrency: String) -> String {
+        let result = (Double(money)) * activeValue
+        let finalResult = convertDouble(number: result)
+        return "\(finalResult) \(activeCurrency)"
+    }
 }

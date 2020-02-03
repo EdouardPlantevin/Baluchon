@@ -20,7 +20,6 @@ class WeatherGetter {
                     guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] else {return}
                     guard let weatherDetails = json["weather"] as? [[String : Any]], let weatherMain = json["main"] as? [String : Any], let weatherTime = json["timezone"] as? Double else {return}
                     let image = (weatherDetails.first?["icon"] as? String) ?? ""
-                    //let time = weatherTime.first?["timezone"]
                     let temp = Int(weatherMain["temp"] as? Double ?? 0)
                     let description = (weatherDetails.first?["description"] as? String)?.capitalizingFirstLetter()
                     DispatchQueue.main.async {
