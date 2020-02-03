@@ -16,7 +16,6 @@ struct WeatherData {
     var time: String
     
     static func getImage(image: String) -> String {
-        print(image)
         switch image {
         case "01d":
             return "01"
@@ -59,5 +58,3 @@ struct WeatherData {
         }
     }
 }
-
-//01d.png

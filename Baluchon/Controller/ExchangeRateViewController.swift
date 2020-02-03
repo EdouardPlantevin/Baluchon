@@ -21,6 +21,9 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var textFieldRate: UITextField!
     @IBOutlet weak var pickerViewDevice: UIPickerView!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     
     //PickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -43,6 +46,9 @@ class ExchangeRateViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.rate.getAllDevice { (success, exchange) in
             if success, let exchange = exchange {
                 self.update(exchange: exchange)
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                }
             }
         }
     }

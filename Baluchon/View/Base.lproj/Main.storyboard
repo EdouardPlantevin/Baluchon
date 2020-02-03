@@ -97,6 +97,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="XKW-Ji-zKC">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1628027558" green="0.2191836834" blue="0.25262027980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -106,6 +110,7 @@
                             <constraint firstItem="o0u-YN-QYT" firstAttribute="trailing" secondItem="VFR-9z-foU" secondAttribute="trailing" constant="20" id="2wp-Cg-eRG"/>
                             <constraint firstItem="zBh-mF-Rt8" firstAttribute="bottom" secondItem="o0u-YN-QYT" secondAttribute="bottom" id="7at-9t-NtD"/>
                             <constraint firstItem="68Y-q2-A1M" firstAttribute="centerY" secondItem="U8y-5C-v8F" secondAttribute="centerY" id="DnZ-7R-8qr"/>
+                            <constraint firstItem="XKW-Ji-zKC" firstAttribute="centerY" secondItem="U8y-5C-v8F" secondAttribute="centerY" id="HzT-6V-oBM"/>
                             <constraint firstItem="68Y-q2-A1M" firstAttribute="leading" secondItem="o0u-YN-QYT" secondAttribute="leading" constant="20" id="JLn-mM-xHf"/>
                             <constraint firstItem="o0u-YN-QYT" firstAttribute="trailing" secondItem="rDa-0B-0Tp" secondAttribute="trailing" constant="20" id="K8M-AY-Oah"/>
                             <constraint firstItem="VFR-9z-foU" firstAttribute="top" secondItem="o0u-YN-QYT" secondAttribute="top" constant="30" id="LAB-IJ-2lk"/>
@@ -121,6 +126,7 @@
                             <constraint firstItem="hAt-1y-sxb" firstAttribute="top" secondItem="68Y-q2-A1M" secondAttribute="bottom" constant="20" id="qg4-Vl-3gb"/>
                             <constraint firstItem="zBh-mF-Rt8" firstAttribute="leading" secondItem="o0u-YN-QYT" secondAttribute="leading" id="rjk-qZ-rmG"/>
                             <constraint firstItem="68Y-q2-A1M" firstAttribute="top" secondItem="rDa-0B-0Tp" secondAttribute="bottom" constant="50" id="ub6-Bf-UQ7"/>
+                            <constraint firstItem="XKW-Ji-zKC" firstAttribute="centerX" secondItem="U8y-5C-v8F" secondAttribute="centerX" id="vAN-bw-Dwf"/>
                             <constraint firstItem="rDa-0B-0Tp" firstAttribute="leading" secondItem="o0u-YN-QYT" secondAttribute="leading" constant="20" id="xEC-c9-531"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o0u-YN-QYT"/>
@@ -130,6 +136,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Taux de change" image="eurosign.circle.fill" catalog="system" id="GTv-3O-Nhq"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="XKW-Ji-zKC" id="XP1-Ap-vnv"/>
                         <outlet property="pickerViewDevice" destination="68Y-q2-A1M" id="egP-ea-437"/>
                         <outlet property="resultLabel" destination="hAt-1y-sxb" id="s0q-EJ-4q9"/>
                         <outlet property="textFieldRate" destination="o5k-fi-xbA" id="PsL-dT-auw"/>
@@ -305,7 +312,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="Pda-bP-Her"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Bold" family="Bodoni 72" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>

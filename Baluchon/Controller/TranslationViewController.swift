@@ -15,6 +15,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     var activeLanguage: String = "fr"
     
+    /// Outlet
     @IBOutlet weak var textfieldTranslate: UITextField!
     @IBOutlet weak var labelTranslate: UITextView!
     @IBOutlet weak var pickerViewLanguage: UIPickerView!
@@ -42,8 +43,10 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         SwiftGoogleTranslate.shared.languages { (languages, error) in
           if let languages = languages {
             for language in languages {
-                self.languagesName.append(language.name)
-                self.languagesInitial.append(language.language)
+                if language.language != "fr" {
+                    self.languagesName.append(language.name)
+                    self.languagesInitial.append(language.language)
+                }
             }
             DispatchQueue.main.async {
                 self.pickerViewLanguage.reloadAllComponents()
@@ -65,6 +68,8 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     DispatchQueue.main.async {
                         self.labelTranslate.text = "\(t)"
                     }
+                } else {
+                    print("caca")
                 }
             }
         } else {

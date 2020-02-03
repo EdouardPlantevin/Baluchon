@@ -67,6 +67,7 @@ class WeatherViewController: UIViewController {
     // Button
     @IBAction func addNewCityButton() {
         textfieldNewCity.isHidden = !textfieldNewCity.isHidden
+        textfieldNewCity.resignFirstResponder()
     }
     
     @IBAction func addNewCity(_ sender: Any) {
