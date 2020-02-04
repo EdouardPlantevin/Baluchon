@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class TranslationViewController: UIViewController {
     
     var activeLanguage: String = "fr"
     
@@ -17,21 +17,6 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var labelTranslate: UITextView!
     @IBOutlet weak var pickerViewLanguage: UIPickerView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    
-    //PickerView
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return LanguageData.shared.languagesName.count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return LanguageData.shared.languagesName[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        activeLanguage = LanguageData.shared.languagesInitial[row]
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +39,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func translateBtn(_ sender: Any) {
-        let currentLanguage = UserDefaults.standard.object(forKey: "currentLanguage")!
+        let currentLanguage = UserDefaults.standard.object(forKey: "currentLanguage") ?? "fr"
         if textfieldTranslate.text != nil && textfieldTranslate.text != "" {
             SwiftGoogleTranslate.shared.translate("\(textfieldTranslate.text!)","\(activeLanguage)", "\(currentLanguage)") { (text, error) in
                 if let t = text {
@@ -77,4 +62,20 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     
+}
+
+ //PickerView
+extension TranslationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return LanguageData.shared.languagesName.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return LanguageData.shared.languagesName[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        activeLanguage = LanguageData.shared.languagesInitial[row]
+    }
 }
