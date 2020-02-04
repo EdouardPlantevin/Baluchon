@@ -62,7 +62,9 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
                         self.labelTranslate.text = "\(t)"
                     }
                 } else {
-                    print("caca")
+                    DispatchQueue.main.async {
+                        presentAlert(view: self, message: "Traduction impossible\nMauvaise orthographe ? \nMême langue ?")
+                    }
                 }
             }
         } else {
