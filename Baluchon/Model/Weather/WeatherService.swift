@@ -64,8 +64,11 @@ class WeatherService {
         //then again set the date format whhich type of output you need
         formatter.dateFormat = "dd/MM HH:mm"
         // again convert your date to string
-        let myStringafd = formatter.string(from: dateD!)
-        return myStringafd
+        if let dateD = dateD {
+            let myStringafd = formatter.string(from: dateD)
+            return myStringafd
+        }
+        return "Erreur Date"
     }
     
     static func getImage(image: String) -> String {

@@ -11,7 +11,7 @@ import UIKit
 class TranslationViewController: UIViewController {
     
     var activeLanguage: String = "en"
-    var googleTest = TranslateService(sessionLanguage: URLSession(configuration: .default), sessionTranslate: URLSession(configuration: .default))
+    var googleService = TranslateService(sessionLanguage: URLSession(configuration: .default), sessionTranslate: URLSession(configuration: .default))
     
     /// Outlet
     @IBOutlet weak var textfieldTranslate: UITextField!
@@ -22,8 +22,10 @@ class TranslationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerViewLanguage.setValue(UIColor.white, forKeyPath: "textColor")
-        googleTest.getLanguage { (success, languages)  in
-            TranslateService.shared.add(languages: languages!)
+        googleService.getLanguage { (success, languages)  in
+            if let languages = languages {
+               TranslateService.shared.add(languages: languages)
+            }
             DispatchQueue.main.async {
                 self.pickerViewLanguage.reloadAllComponents()
                 self.activityIndicator.stopAnimating()
@@ -39,7 +41,7 @@ class TranslationViewController: UIViewController {
     @IBAction func translateBtn(_ sender: Any) {
         let currentLanguage = UserDefaults.standard.object(forKey: "currentLanguage") ?? "fr"
         if let text = textfieldTranslate.text {
-            googleTest.getTranslate(q: "\(text)", source: "\(currentLanguage)", target: "\(activeLanguage)") { (success, result) in
+            googleService.getTranslate(q: "\(text)", source: "\(currentLanguage)", target: "\(activeLanguage)") { (success, result) in
                 if let result = result, result != "" {
                     self.labelTranslate.text = result
                 } else {

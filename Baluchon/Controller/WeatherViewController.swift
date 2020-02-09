@@ -10,8 +10,6 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    let date = Date()
-    let format = DateFormatter()
     let weather = WeatherService(session: URLSession(configuration: .default))
     
     //Outlet
@@ -30,8 +28,12 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         weather.getWeather(city: "caen") { (success, weather) in
             if success, let weather = weather {
-                self.setWeather(description: weather.weather.first!.weatherDescription, temp: Int(weather.main.temp), image: weather.weather.first!.icon, city: weather.name, time: self.weather.getDate(timezone: weather.timezone))
-                self.hiddenWeatherFalse()
+                if let icon = weather.weather.first?.icon {
+                    if let description = weather.weather.first?.weatherDescription {
+                        self.setWeather(description: description, temp: Int(weather.main.temp), image: icon, city: weather.name, time: self.weather.getDate(timezone: weather.timezone))
+                        self.hiddenWeatherFalse()
+                    }
+                }
             }
         }
         self.textfieldNewCity.addTarget(self, action: #selector(addNewCity(_:)), for: UIControl.Event.editingDidEndOnExit)
@@ -39,17 +41,17 @@ class WeatherViewController: UIViewController {
     
     // Func
     
-    func setMoonToTimeImage() {
+    private func setMoonToTimeImage() {
         timeImage.image = UIImage(named: "moon")
     }
     
-    func setSunToTimeImage() {
+    private func setSunToTimeImage() {
         timeImage.image = UIImage(named: "sunWeather")
     }
     
     
-    func setWeather(description: String?, temp: Int, image: String, city: String?, time: String?) {
-        let replaced = (city! as NSString).replacingOccurrences(of: "+", with: " ")
+    private func setWeather(description: String?, temp: Int, image: String, city: String, time: String?) {
+        let replaced = (city as NSString).replacingOccurrences(of: "+", with: " ")
         self.currentCityLabel.text = replaced
         let degrees: Double = Double(temp) - 273.15
         self.degreesLabel.text = "\(degrees.rounded()) °C"
@@ -75,7 +77,12 @@ class WeatherViewController: UIViewController {
             let replaced = (textfieldNewCity.text! as NSString).replacingOccurrences(of: " ", with: "+")
             weather.getWeather(city: replaced) { (success, weather) in
                 if success, let weather = weather {
-                    self.setWeather(description: weather.weather.first!.weatherDescription, temp: Int(weather.main.temp), image: weather.weather.first!.icon, city: weather.name, time: self.weather.getDate(timezone: weather.timezone))
+                    if let icon = weather.weather.first?.icon {
+                        if let description = weather.weather.first?.weatherDescription {
+                            self.setWeather(description: description, temp: Int(weather.main.temp), image: icon, city: weather.name, time: self.weather.getDate(timezone: weather.timezone))
+                            self.hiddenWeatherFalse()
+                        }
+                    }
                 }
             }
         }
@@ -83,7 +90,7 @@ class WeatherViewController: UIViewController {
         textfieldNewCity.isHidden = true
     }
     
-    func hiddenWeatherFalse() {
+    private func hiddenWeatherFalse() {
         textfieldNewCity.isHidden = false
         currentCityLabel.isHidden = false
         degreesLabel.isHidden = false

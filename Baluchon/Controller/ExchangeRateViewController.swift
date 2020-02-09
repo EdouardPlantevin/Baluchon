@@ -36,7 +36,7 @@ class ExchangeRateViewController: UIViewController {
         }
     }
     
-    func update(exchange: ExchangeData) {
+    private func update(exchange: ExchangeData) {
         DispatchQueue.main.async {
             self.rate.myCurrency = exchange.myCurrency
             self.rate.myValues = exchange.myValues
@@ -50,7 +50,9 @@ class ExchangeRateViewController: UIViewController {
         textFieldRate.resignFirstResponder()
         if (textFieldRate.text != nil && textFieldRate.text != "") {
             if let number = textFieldRate.text, number.isInt {
-                           resultLabel.text = ExchangeData.convertToResult(activeValue: activeValue, money: (Double(textFieldRate.text!))!, activeCurrency: activeCurrency)
+                if let numberDouble = Double(number) {
+                    resultLabel.text = ExchangeData.convertToResult(activeValue: activeValue, money: numberDouble, activeCurrency: activeCurrency)
+                }
             } else {
                 if let wrongResult = textFieldRate.text {
                     presentAlert(view: self, message: "Vous vouliez vraiment convertir \(wrongResult) ?")
