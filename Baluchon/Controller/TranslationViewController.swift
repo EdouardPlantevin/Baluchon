@@ -10,7 +10,8 @@ import UIKit
 
 class TranslationViewController: UIViewController {
     
-    var activeLanguage: String = "fr"
+    var activeLanguage: String = "en"
+    var googleTest = TranslateService(sessionLanguage: URLSession(configuration: .default), sessionTranslate: URLSession(configuration: .default))
     
     /// Outlet
     @IBOutlet weak var textfieldTranslate: UITextField!
@@ -21,16 +22,13 @@ class TranslationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerViewLanguage.setValue(UIColor.white, forKeyPath: "textColor")
-        SwiftGoogleTranslate.shared.start(with: "\(apiUrl["googleTranslate"]!)")
-        SwiftGoogleTranslate.shared.languages { (languages, error) in
-          if let languages = languages {
-            LanguageData.shared.add(languages: languages)
+        googleTest.getLanguage { (success, languages)  in
+            TranslateService.shared.add(languages: languages!)
             DispatchQueue.main.async {
                 self.pickerViewLanguage.reloadAllComponents()
                 self.activityIndicator.stopAnimating()
                 self.pickerViewLanguage.isHidden = false
             }
-          }
         }
     }
     
@@ -40,21 +38,16 @@ class TranslationViewController: UIViewController {
     
     @IBAction func translateBtn(_ sender: Any) {
         let currentLanguage = UserDefaults.standard.object(forKey: "currentLanguage") ?? "fr"
-        if textfieldTranslate.text != nil && textfieldTranslate.text != "" {
-            SwiftGoogleTranslate.shared.translate("\(textfieldTranslate.text!)","\(activeLanguage)", "\(currentLanguage)") { (text, error) in
-                if let t = text {
-                    DispatchQueue.main.async {
-                        self.labelTranslate.text = "\(t)"
-                    }
+        if let text = textfieldTranslate.text {
+            googleTest.getTranslate(q: "\(text)", source: "\(currentLanguage)", target: "\(activeLanguage)") { (success, result) in
+                if let result = result, result != "" {
+                    self.labelTranslate.text = result
                 } else {
-                    DispatchQueue.main.async {
-                        presentAlert(view: self, message: "Traduction impossible\nMauvaise orthographe ? \nMême langue ?")
-                    }
+                    presentAlert(view: self, message: "Traduction impossible\nMême langue ?")
                 }
             }
-        } else {
-            presentAlert(view: self, message: "Aucun mot à traduire")
         }
+
     }
     
     @IBAction func dismissKeybordFormTextfield(_ sender: UITextField) {
@@ -70,12 +63,12 @@ extension TranslationViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return LanguageData.shared.languagesName.count
+        return TranslateService.shared.languagesInitial.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return LanguageData.shared.languagesName[row]
+        return TranslateService.shared.languagesName[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        activeLanguage = LanguageData.shared.languagesInitial[row]
+        activeLanguage = TranslateService.shared.languagesInitial[row]
     }
 }

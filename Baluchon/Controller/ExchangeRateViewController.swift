@@ -10,7 +10,7 @@ import UIKit
 
 class ExchangeRateViewController: UIViewController {
     
-    var rate = ExchangeRate()
+    var rate = ExchangeService(session: URLSession(configuration: .default))
     
     //Use for resultLabel
     var activeValue: Double = 0
@@ -26,7 +26,7 @@ class ExchangeRateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerViewDevice.setValue(UIColor.white, forKeyPath: "textColor")
-        self.rate.getAllDevice { (success, exchange) in
+        self.rate.getRate { (success, exchange) in
             if success, let exchange = exchange {
                 self.update(exchange: exchange)
                 DispatchQueue.main.async {
@@ -49,9 +49,15 @@ class ExchangeRateViewController: UIViewController {
     @IBAction func convertButton(_ sender: UIButton) {
         textFieldRate.resignFirstResponder()
         if (textFieldRate.text != nil && textFieldRate.text != "") {
-            resultLabel.text = ExchangeData.convertToResult(activeValue: activeValue, money: (Double(textFieldRate.text!))!, activeCurrency: activeCurrency)
+            if let number = textFieldRate.text, number.isInt {
+                           resultLabel.text = ExchangeData.convertToResult(activeValue: activeValue, money: (Double(textFieldRate.text!))!, activeCurrency: activeCurrency)
+            } else {
+                if let wrongResult = textFieldRate.text {
+                    presentAlert(view: self, message: "Vous vouliez vraiment convertir \(wrongResult) ?")
+                }
+            }
         } else {
-            presentAlert(view: self, message: "Vous n'avez entrez aucun chiffre")
+            presentAlert(view: self, message: "Vous n'avez entré aucun chiffre")
         }
     }
     

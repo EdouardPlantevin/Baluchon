@@ -12,4 +12,7 @@ extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).uppercased() + self.lowercased().dropFirst()
     }
+    var isInt: Bool {
+        return Int(self) != nil
+    }
 }

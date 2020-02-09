@@ -12,7 +12,7 @@ class WeatherViewController: UIViewController {
     
     let date = Date()
     let format = DateFormatter()
-    let weather = WeatherGetter()
+    let weather = WeatherService(session: URLSession(configuration: .default))
     
     //Outlet
     @IBOutlet weak var currentCityLabel: UILabel!
@@ -28,9 +28,9 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        weather.getWeather(city: "Caen") { (success, weather) in
+        weather.getWeather(city: "caen") { (success, weather) in
             if success, let weather = weather {
-                self.setWeather(description: weather.description, temp: weather.temp, image: weather.image, city: weather.city, time: weather.time)
+                self.setWeather(description: weather.weather.first!.weatherDescription, temp: Int(weather.main.temp), image: weather.weather.first!.icon, city: weather.name, time: self.weather.getDate(timezone: weather.timezone))
                 self.hiddenWeatherFalse()
             }
         }
@@ -40,11 +40,11 @@ class WeatherViewController: UIViewController {
     // Func
     
     func setMoonToTimeImage() {
-        timeImage.image = UIImage(systemName: "moon.fill")
+        timeImage.image = UIImage(named: "moon")
     }
     
     func setSunToTimeImage() {
-        timeImage.image = UIImage(systemName: "sun.max.fill")
+        timeImage.image = UIImage(named: "sunWeather")
     }
     
     
@@ -55,7 +55,7 @@ class WeatherViewController: UIViewController {
         self.degreesLabel.text = "\(degrees.rounded()) °C"
         self.detailWeatherLabel.text = description
         self.timeLabel.text = time
-        currentWeatherImage.image = UIImage(named: WeatherData.getImage(image: image))
+        currentWeatherImage.image = UIImage(named: WeatherService.getImage(image: image))
         if image.contains("d") {
             setSunToTimeImage()
         } else {
@@ -75,7 +75,7 @@ class WeatherViewController: UIViewController {
             let replaced = (textfieldNewCity.text! as NSString).replacingOccurrences(of: " ", with: "+")
             weather.getWeather(city: replaced) { (success, weather) in
                 if success, let weather = weather {
-                    self.setWeather(description: weather.description, temp: weather.temp, image: weather.image, city: weather.city, time: weather.time)
+                    self.setWeather(description: weather.weather.first!.weatherDescription, temp: Int(weather.main.temp), image: weather.weather.first!.icon, city: weather.name, time: self.weather.getDate(timezone: weather.timezone))
                 }
             }
         }

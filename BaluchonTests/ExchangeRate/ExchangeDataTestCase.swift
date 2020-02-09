@@ -22,5 +22,7 @@ class ExchangeDataTestCase: XCTestCase {
         
         XCTAssert(result == "20.0 EUR")
     }
+    
+    
 
 }

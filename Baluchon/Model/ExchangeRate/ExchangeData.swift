@@ -8,14 +8,13 @@
 
 import Foundation
 
-struct ExchangeData {
+struct ExchangeData: Decodable {
     var myCurrency:[String] = []
     var myValues:[Double] = []
     
     static func convertDouble(number: Double) -> String {
         var finalNumber = number
         finalNumber = round(1000*number)/1000
-        print(finalNumber)
         return String(finalNumber)
     }
     

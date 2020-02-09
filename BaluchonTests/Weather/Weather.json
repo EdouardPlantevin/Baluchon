@@ -1,0 +1,49 @@
+{
+    "coord": {
+        "lon": -0.42,
+        "lat": 49.08
+    },
+    "weather": [
+        {
+            "id": 500,
+            "main": "Rain",
+            "description": "légère pluie",
+            "icon": "10d"
+        },
+        {
+            "id": 701,
+            "main": "Mist",
+            "description": "brume",
+            "icon": "50d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 286.15,
+        "feels_like": 275.61,
+        "temp_min": 286.15,
+        "temp_max": 286.15,
+        "pressure": 1000,
+        "humidity": 93
+    },
+    "visibility": 4800,
+    "wind": {
+        "speed": 15.9,
+        "deg": 220
+    },
+    "clouds": {
+        "all": 90
+    },
+    "dt": 1581266000,
+    "sys": {
+        "type": 1,
+        "id": 6569,
+        "country": "FR",
+        "sunrise": 1581232898,
+        "sunset": 1581268212
+    },
+    "timezone": 3600,
+    "id": 3029240,
+    "name": "Caen",
+    "cod": 200
+}

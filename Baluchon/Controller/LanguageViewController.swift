@@ -41,13 +41,13 @@ extension LanguageViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return LanguageData.shared.languagesName.count
+        return TranslateService.shared.languagesInitial.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return LanguageData.shared.languagesName[row]
+        return TranslateService.shared.languagesName[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currentLanguage = LanguageData.shared.languagesInitial[row]
+        currentLanguage = TranslateService.shared.languagesInitial[row]
     }
     
 }

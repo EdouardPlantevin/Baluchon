@@ -13,7 +13,7 @@ class WeatherGetterTestCase: XCTestCase {
 
     func testGivenWeatherGetter_WhenGiveTimeZone_ThenShouldReturnDateAndTime() {
         //Given
-        let weather = WeatherGetter()
+        let weather = WeatherService(session: URLSession(configuration: .default))
         
         //Create
         let date = weather.getDate(timezone: 3600.0)
