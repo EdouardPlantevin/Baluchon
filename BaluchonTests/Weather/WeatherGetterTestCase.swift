@@ -22,4 +22,15 @@ class WeatherGetterTestCase: XCTestCase {
         XCTAssert(date.count == 11)
     }
     
+    func testGivenWeatherGetter_WhenGiveNoTimeZone_ThenShouldReturnDateAndTime() {
+        //Given
+        let weather = WeatherService(session: URLSession(configuration: .default))
+        
+        //Create
+        let date = weather.getDate(timezone: 1123456789.12345678909876543)
+        
+        // Then
+        XCTAssert(date.count == 11)
+    }
+    
 }
